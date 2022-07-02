@@ -1,0 +1,24 @@
+{
+	"FileVersion": 3,
+	"Version": 3,
+	"VersionName": "3.0",
+	"FriendlyName": "C++ BasicStateMachine Plugin",
+	"Description": "C++ Plugin Based State Machine: Fighting Game | Live Training | Unreal Engine",
+	"Category": "State Machine",
+	"CreatedBy": "Sascha Robitzki",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "BasicStateMachine",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	]
+}
