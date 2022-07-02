@@ -27,8 +27,8 @@ USM_State* USM_Transition::TryTransition(const UObject* RefObject,
 
 FStateMachineResult USM_State::RunState(const UObject* RefObject,
 										const TArray<USM_InputAtom*>& DataSource,
-										const int32 DataIndex /*=0*/,
-										int32 RemainingSteps /*=-1*/)
+										const int32 DataIndex/*=0*/,
+										int32 RemainingSteps/*=-1*/)
 {
 	bool bMustEndNow = bTerminateImmediately || !DataSource.IsValidIndex(DataIndex);
 

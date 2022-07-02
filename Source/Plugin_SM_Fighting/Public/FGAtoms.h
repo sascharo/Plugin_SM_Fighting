@@ -24,7 +24,7 @@ enum class EFGButtonState : uint8
 {
 	Up,
 	JustPressed,
-	HeldDon,
+	HeldDown,
 	Count UMETA(Hidden)
 	
 };

@@ -2,11 +2,11 @@
 
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
+#include "FGDefaultPawn.h"
+#include "FGState.h"
 #include "SM_State.h"
 #include "FGMoveLink.generated.h"
 
-class AFGDefaultPawn;
-class UFGState;
 class UFGMove;
 
 /**
@@ -19,9 +19,9 @@ class PLUGIN_SM_FIGHTING_API UFGMoveLink : public UDataAsset
 	
 public:
 	FStateMachineResult TryLink(const AFGDefaultPawn* RefObject,
-								const TArray<USM_InputAtom*>& DataSource,
-								int32 DataIndex=0,
-								int32 RemainingSteps=-1);
+									const TArray<USM_InputAtom*>& DataSource,
+									int32 DataIndex=0,
+									int32 RemainingSteps=-1);
 
 	UPROPERTY(EditAnywhere, Category="Move Link")
 	UFGMove* Move;
@@ -37,4 +37,5 @@ public:
 	// Sequence of inputs used to trigger this move. If not NULL, will override move's own input state machine.
 	UPROPERTY(EditAnywhere, Category="Move Link")
 	UFGState* InputStateMachine;
+	
 };

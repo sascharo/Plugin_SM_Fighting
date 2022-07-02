@@ -3,10 +3,11 @@
 #include "CoreMinimal.h"
 #include "Engine/DataAsset.h"
 #include "SM_State.h"
+#include "FGMoveLink.h"
 #include "FGMove.generated.h"
 
 class AFGDefaultPawn;
-class UFGMoveLink;
+//class UFGMoveLink;
 
 /**
  * 
@@ -16,7 +17,7 @@ struct PLUGIN_SM_FIGHTING_API FFGMoveLinkToFollow
 {
 	GENERATED_USTRUCT_BODY()
 public:
-	FFGMoveLinkToFollow() {	Link = nullptr;	}
+	FORCEINLINE FFGMoveLinkToFollow() {	Link = nullptr;	}
 
 	UPROPERTY()
 	UFGMoveLink* Link;
