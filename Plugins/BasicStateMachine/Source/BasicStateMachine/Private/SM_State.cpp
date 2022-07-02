@@ -1,5 +1,15 @@
 #include "SM_State.h"
 
+/*USM_State* USM_TransitionBase::TryTransition(const UObject* RefObject,
+											 const TArray<USM_InputAtom*>& DataSource,
+											 const int32 DataIndex,
+											 int32 &OutDataIndex)
+{
+	OutDataIndex = DataIndex;
+
+	return nullptr;
+}*/
+
 USM_State* USM_Transition::TryTransition(const UObject* RefObject,
 										 const TArray<USM_InputAtom*>& DataSource,
 										 const int32 DataIndex,

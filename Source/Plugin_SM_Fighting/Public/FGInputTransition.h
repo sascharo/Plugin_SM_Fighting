@@ -2,14 +2,13 @@
 
 #include "CoreMinimal.h"
 #include "SM_State.h"
-#include "FGAtoms.h"
 #include "FGInputTransition.generated.h"
 
 /**
  * 
  */
-UCLASS()
-class PLUGIN_SM_FIGHTING_API UFGInputTransition : public USM_Transition
+UCLASS(Category="Fighting Game")
+class PLUGIN_SM_FIGHTING_API UFGInputTransition : public USM_TransitionBase
 {
 	GENERATED_BODY()
 
@@ -20,15 +19,15 @@ public:
 protected:
 	// These buttons must be Just Pressed or Held Down.
 	// If any are checked, at least one must be Just Pressed.
-	UPROPERTY(EditAnywhere, Meta=(Bitmask, BitmaskEnum="EFGInputButton"))
+	UPROPERTY(EditAnywhere, meta=(Bitmask, BitmaskEnum="EFGInputButtons"))
 	int32 RequiredButtons;
 
 	// These buttons must all be Up.
-	UPROPERTY(EditAnywhere, Meta=(Bitmask, BitmaskEnum="EFGInputButton"))
+	UPROPERTY(EditAnywhere, meta=(Bitmask, BitmaskEnum="EFGInputButtons"))
 	int32 ForbiddenButtons;
 
 	// Required control-stick directions - at least one of these must match the current input direction.
-	UPROPERTY(EditAnywhere, Meta=(Bitmask, BitmaskEnum="EFGInputButton"))
+	UPROPERTY(EditAnywhere, meta=(Bitmask, BitmaskEnum="EFGInputDirections"))
 	int32 AcceptableDirections;
 	
 };

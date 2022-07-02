@@ -4,7 +4,7 @@
 #include "SM_State.h"
 #include "FGAtoms.generated.h"
 
-UENUM(Blueprintable, meta=(Bitflags))
+UENUM(Blueprintable, meta=(Bitflags), Category="State Machine")
 enum class EFGInputDirections : uint8
 {
 	DownBack,
@@ -19,27 +19,29 @@ enum class EFGInputDirections : uint8
 	
 };
 
-UENUM()
+UENUM(Category="State Machine")
 enum class EFGButtonState : uint8
 {
 	Up,
 	JustPressed,
 	HeldDon,
 	Count UMETA(Hidden)
+	
 };
 
-UENUM(Blueprintable, Meta=(Bitflags))
+UENUM(Blueprintable, meta=(Bitflags), Category="State Machine")
 enum class EFGInputButtons : uint8
 {
 	LeftFace,
 	TopFace,
 	Count UMETA(Hidden)
+	
 };
 
 /**
  * 
  */
-UCLASS()
+UCLASS(Category="State Machine")
 class PLUGIN_SM_FIGHTING_API UFGDirectionalInputAtom : public USM_InputAtom
 {
 	GENERATED_BODY()
@@ -53,7 +55,7 @@ public:
 /**
  * 
  */
-UCLASS()
+UCLASS(Category="State Machine")
 class PLUGIN_SM_FIGHTING_API UFGButtonInputAtom : public USM_InputAtom
 {
 	GENERATED_BODY()
@@ -63,13 +65,3 @@ public:
 	EFGInputDirections InputDirection;
 	
 };
-
-/**
- * 
- */
-/*UCLASS()
-class PLUGIN_SM_FIGHTING_API UFGAtoms : public USM_InputAtom
-{
-	GENERATED_BODY()
-	
-};*/
