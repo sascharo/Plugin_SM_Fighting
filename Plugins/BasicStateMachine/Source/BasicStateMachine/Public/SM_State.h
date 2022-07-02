@@ -27,15 +27,6 @@ struct BASICSTATEMACHINE_API FStateMachineResult
 {
 	GENERATED_USTRUCT_BODY()
 
-	UPROPERTY()
-	EStateMachineCompletionType CompletionType;
-
-	UPROPERTY()
-	USM_State* FinalState;
-
-	UPROPERTY()
-	int32 DataIndex;
-
 	FStateMachineResult(): CompletionType(), FinalState(nullptr), DataIndex(0) {}
 
 	FStateMachineResult(const EStateMachineCompletionType StateMachineCompletionType, USM_State* USMFinalState, int32 DataIdx)
@@ -44,6 +35,15 @@ struct BASICSTATEMACHINE_API FStateMachineResult
 		FinalState = USMFinalState;
 		DataIndex = DataIdx;
 	}
+
+	UPROPERTY()
+	EStateMachineCompletionType CompletionType;
+
+	UPROPERTY()
+	USM_State* FinalState;
+
+	UPROPERTY()
+	int32 DataIndex;
 	
 };
 
@@ -114,6 +114,7 @@ protected:
 										  int32 DataIndex,
 										  int32 RemainingSteps);
 
+protected:
 	// If input runs out on this state (or TerminateImmediately is true), this is how the result will be interpreted.
 	UPROPERTY(EditAnywhere)
 	EStateMachineCompletionType CompletionType;
