@@ -1,0 +1,23 @@
+{
+	"FileVersion": 3,
+	"EngineAssociation": "4.27",
+	"Category": "",
+	"Description": "",
+	"Modules": [
+		{
+			"Name": "Plugin_SM_Fighting",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"AdditionalDependencies": [
+				"BasicStateMachine",
+				"Engine"
+			]
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "BasicStateMachine",
+			"Enabled": true
+		}
+	]
+}
