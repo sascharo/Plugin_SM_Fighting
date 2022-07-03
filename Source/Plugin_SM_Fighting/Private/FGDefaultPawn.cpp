@@ -10,8 +10,6 @@ AFGDefaultPawn::AFGDefaultPawn()
 {
 	// Needed because we're using DefaultPawn.
 	bAddDefaultMovementBindings = false;
-	// This needs to be tweaked for your game's feel, but it works.
-	InputExpirationTime = 0.75f;
 }
 
 void AFGDefaultPawn::BeginPlay() 
@@ -41,7 +39,7 @@ void AFGDefaultPawn::BeginPlay()
 		return;
 	}
 
-	constexpr int32 ButtonInputCount = static_cast<int32>(EFGButtonState::Count);
+	constexpr auto ButtonInputCount = static_cast<int32>(EFGButtonState::Count);
 
 	for (int32 i = 0; i < ButtonInputCount; ++i)
 	{
@@ -61,10 +59,11 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 
-	// Process input
+	// Process input.
 
-	// Add one atom for stick direction
-	constexpr float DirectionThreshold = 0.5f;
+	//const auto NegDirectionThreshold = -DirectionThreshold;
+	
+	// Add one atom for stick direction.
 	UFGDirectionalInputAtom* InputDirection = nullptr;
 	
 	if (DirectionInput.X < -DirectionThreshold)
@@ -118,9 +117,9 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 	// Add one atom for each button's state.
 	for (int32 i = 0; i < static_cast<int32>(EFGInputButtons::Count); ++i)
 	{
-		if (ButtonsDown & (1<<i))
+		if (ButtonsDown & (1 << i))
 		{
-			if (ButtonsDown_Old & (1<<i))
+			if (ButtonsDown_Old & (1 << i))
 			{
 				InputStream.Add(ButtonAtoms[static_cast<int32>(EFGButtonState::HeldDown)]);
 			}
@@ -135,14 +134,14 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 		}
 	}
 
+	// Cache old button state so we can distinguish between held and just pressed.
+	ButtonsDown_Old = ButtonsDown;
+	
 	// Always add an input time stamp to match the input sequence.
 	const float CurrentTime = UKismetSystemLibrary::GetGameTimeInSeconds(this);
 	InputTimeStamps.Add(CurrentTime);
 
-	// Cache old button state so we can distinguish between held and just pressed.
-	ButtonsDown_Old = ButtonsDown;
-
-	// Prune old inputs. This would be better-suited to a ringbuffer than an array, but it's not much data.
+	// Prune old inputs. This would be better-suited to a ring-buffer than an array, but it's not much data.
 	for (int32 i = 0; i < InputStream.Num(); ++i)
 	{
 		if ((InputTimeStamps[i] + InputExpirationTime) >= CurrentTime)
@@ -153,6 +152,7 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 				InputTimeStamps.RemoveAt(0, i, false);
 				InputStream.RemoveAt(0, i * (static_cast<int32>(EFGInputButtons::Count) + 1), false);
 			}
+			
 			break;
 		}
 	}
@@ -161,8 +161,11 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 	
 	if (MoveLinkToFollow.SMR.CompletionType == EStateMachineCompletionType::Accepted)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Switching to state %s"), *MoveLinkToFollow.Link->Move->MoveName.ToString());
-		if (MoveLinkToFollow.Link->bClearInput || MoveLinkToFollow.Link->Move->bClearInputOnEntry || CurrentMove->bClearInputOnExit)
+		UE_LOG(LogTemp, Warning, TEXT("Switching to state %s."), *MoveLinkToFollow.Link->Move->MoveName.ToString());
+		
+		if (MoveLinkToFollow.Link->bClearInput ||
+			MoveLinkToFollow.Link->Move->bClearInputOnEntry ||
+			CurrentMove->bClearInputOnExit)
 		{
 			InputStream.Reset();
 			InputTimeStamps.Reset();
@@ -177,12 +180,12 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 
 		// Set and start the new move.
 		CurrentMove = MoveLinkToFollow.Link->Move;
-		TimeInCurrentMove = 0.0f;
+		TimeInCurrentMove = 0.f;
 		DoMove(CurrentMove);
 	}
 	else
 	{
-		TimeInCurrentMove += DeltaSeconds; // Modulate by move animation length
+		TimeInCurrentMove += DeltaSeconds; // Modulate by move animation length.
 	}
 }
 
@@ -240,14 +243,15 @@ void AFGDefaultPawn::UseGameCamera()
 			{
 				if (UGameplayStatics::GetPlayerControllerID(PC) == 0)
 				{
-					UE_LOG(LogTemp, Warning, TEXT("Player %i registering with game camera (one)"), UGameplayStatics::GetPlayerControllerID(PC));
+					UE_LOG(LogTemp, Warning, TEXT("Player %i registering with game camera (one)."), UGameplayStatics::GetPlayerControllerID(PC));
 					Cam->PlayerOne = this;
 				}
 				else
 				{
-					UE_LOG(LogTemp, Warning, TEXT("Player %i registering with game camera (two)"), UGameplayStatics::GetPlayerControllerID(PC));
+					UE_LOG(LogTemp, Warning, TEXT("Player %i registering with game camera (two)."), UGameplayStatics::GetPlayerControllerID(PC));
 					Cam->PlayerTwo = this;
 				}
+				
 				PC->SetViewTarget(GM->MainGameCamera);
 				
 				return;
