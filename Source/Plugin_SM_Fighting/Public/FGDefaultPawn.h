@@ -55,35 +55,27 @@ protected:
 	UPROPERTY(EditAnywhere, Category="Move")
 	UFGMove* CurrentMove;
 
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionDownBackAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionDownAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionDownForwardAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionBackAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionNeutralAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionForwardAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionUpBackAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionUpAtom;
-
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionUpForwardAtom;
 
 	// Order in this array is the same as EFGButtonState: Up, JustPressed, Held
-	UPROPERTY(EditAnywhere, Category="Input Atoms")
+	UPROPERTY(EditAnywhere, Category="Button Input Atoms")
 	TArray<UFGButtonInputAtom*> ButtonAtoms;
 
 private:

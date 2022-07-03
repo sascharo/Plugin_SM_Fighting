@@ -62,6 +62,6 @@ class PLUGIN_SM_FIGHTING_API UFGButtonInputAtom : public USM_InputAtom
 public:
 	// State of the button being described.
 	UPROPERTY(EditAnywhere)
-	EFGInputDirections InputDirection;
+	EFGButtonState InputDirection;
 	
 };

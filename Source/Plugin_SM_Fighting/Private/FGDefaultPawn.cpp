@@ -23,7 +23,7 @@ void AFGDefaultPawn::BeginPlay()
 
 	if (!CurrentMove)
 	{
-		UE_LOG(LogTemp, Error, TEXT("No initial move."));
+		UE_LOG(LogTemp, Error, TEXT("No initial move!"));
 		Destroy();
 		
 		return;
@@ -33,7 +33,7 @@ void AFGDefaultPawn::BeginPlay()
 		!DirectionBackAtom || !DirectionNeutralAtom || !DirectionForwardAtom ||
 		!DirectionUpBackAtom || !DirectionUpAtom || !DirectionUpForwardAtom)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Missing at least one directional atom."));
+		UE_LOG(LogTemp, Error, TEXT("Missing at least one directional atom!"));
 		Destroy();
 		
 		return;
