@@ -23,7 +23,7 @@ void AFGDefaultPawn::BeginPlay()
 
 	if (!CurrentMove)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("No initial move."));
+		UE_LOG(LogTemp, Error, TEXT("No initial move."));
 		Destroy();
 		
 		return;
