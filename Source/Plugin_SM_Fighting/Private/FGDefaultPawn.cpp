@@ -195,6 +195,7 @@ void AFGDefaultPawn::SetupPlayerInputComponent(UInputComponent* InInputComponent
 
 	InInputComponent->BindAxis("XAxis", this, &AFGDefaultPawn::ReadXAxis);
 	InInputComponent->BindAxis("YAxis", this, &AFGDefaultPawn::ReadYAxis);
+	
 	InInputComponent->BindAction("LeftButton", IE_Pressed, this, &AFGDefaultPawn::LeftButtonPressed);
 	InInputComponent->BindAction("LeftButton", IE_Released, this, &AFGDefaultPawn::LeftButtonReleased);
 	InInputComponent->BindAction("TopButton", IE_Pressed, this, &AFGDefaultPawn::TopButtonPressed);

@@ -49,8 +49,7 @@ public:
 
 protected:
 	FVector2D DirectionInput;
-	uint32 ButtonsDown = 0;
-	uint32 ButtonsDown_Old = 0;
+	int32 ButtonsDown = 0, ButtonsDown_Old = 0;
 	float TimeInCurrentMove = 0.f;
 
 	UPROPERTY(EditAnywhere, Category="Move")
