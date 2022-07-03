@@ -19,6 +19,7 @@ public:
 
 public:
 	// This will be spawned when the game starts.
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Camera")
 	ACameraActor* MainGameCamera;
+	
 };
