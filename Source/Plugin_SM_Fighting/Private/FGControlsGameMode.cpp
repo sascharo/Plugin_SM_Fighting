@@ -1,6 +1,6 @@
-#include "Kismet/GameplayStatics.h"
 #include "FGControlsGameMode.h"
 #include "FGCameraActor.h"
+#include "Kismet/GameplayStatics.h"
 
 void AFGControlsGameMode::StartPlay()
 {
