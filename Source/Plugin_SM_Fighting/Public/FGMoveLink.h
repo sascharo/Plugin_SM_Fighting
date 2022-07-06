@@ -18,10 +18,10 @@ class PLUGIN_SM_FIGHTING_API UFGMoveLink : public UDataAsset
 	GENERATED_BODY()
 	
 public:
-	FStateMachineResult TryLink(const AFGDefaultPawn* RefObject,
-									const TArray<USM_InputAtom*>& DataSource,
-									int32 DataIndex=0,
-									int32 RemainingSteps=-1);
+	FStateMachineResult TryLink(const AFGDefaultPawn* DefaultPawn,
+							    const TArray<USM_InputAtom*>& InputAtoms,
+							    int32 DataIndex=0,
+								int32 RemainingSteps=-1);
 
 	UPROPERTY(EditAnywhere, Category="Move Link")
 	UFGMove* Move;

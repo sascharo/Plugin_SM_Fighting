@@ -23,7 +23,7 @@ public:
 	UFGMoveLink* Link;
 
 	UPROPERTY()
-	FStateMachineResult SMR;
+	FStateMachineResult SMResult;
 	
 };
 
@@ -37,29 +37,29 @@ class PLUGIN_SM_FIGHTING_API UFGMove : public UDataAsset
 	
 public:
 	// Tries all links, returns the best one to follow and the result of the state machine that got there.
-	FFGMoveLinkToFollow TryLinks(const AFGDefaultPawn* RefObject,
-								 const TArray<USM_InputAtom*>& DataSource,
+	FFGMoveLinkToFollow TryLinks(const AFGDefaultPawn* DefaultPawn,
+								 const TArray<USM_InputAtom*>& InputAtoms,
 								 int32 DataIndex=0,
 								 int32 RemainingSteps=-1);
+	
+	// Animation to play while doing this move.
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
+	FName Name;
 
 	// Animation to play while doing this move.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Move")
-	FName MoveName;
-
-	// Animation to play while doing this move.
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Move")
+	UPROPERTY(EditAnywhere, BlueprintReadOnly)
 	UAnimMontage* Animation;
 	
 	// Links from this move to others.
-	UPROPERTY(EditAnywhere, Category="Move")
+	UPROPERTY(EditAnywhere)
 	TArray<UFGMoveLink*> LinkedMoves;
 
 	// Clears input buffer when entering this state.
-	UPROPERTY(EditAnywhere, Category="Move")
+	UPROPERTY(EditAnywhere)
 	uint32 bClearInputOnEntry : 1;
 
 	// Clears input buffer when exiting this state.
-	UPROPERTY(EditAnywhere, Category="Move")
+	UPROPERTY(EditAnywhere)
 	uint32 bClearInputOnExit : 1;
 	
 };

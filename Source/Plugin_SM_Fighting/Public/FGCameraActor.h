@@ -18,13 +18,14 @@ public:
 	virtual void Tick(float DeltaSeconds) override;
 
 public:
-	UPROPERTY()
-	AActor* PlayerOne;
+	//UPROPERTY(VisibleAnywhere, Category="Actors")
+	//AActor* PlayerOne;
+	//UPROPERTY(VisibleAnywhere, Category="Actors")
+	//AActor* PlayerTwo;
+	UPROPERTY(VisibleAnywhere)
+	TArray<AActor*> Players;
 
-	UPROPERTY()
-	AActor* PlayerTwo;
-
-	UPROPERTY()
+	UPROPERTY(VisibleAnywhere)
 	USpringArmComponent* SpringArm;
 
 	UPROPERTY(EditAnywhere)

@@ -22,7 +22,7 @@ public:
 
 	virtual void BeginPlay() override;
 	virtual void Tick(float DeltaSeconds) override;
-	virtual void SetupPlayerInputComponent(UInputComponent* InInputComponent) override;
+	virtual void SetupPlayerInputComponent(UInputComponent* PlayerInputComponent) override;
 
 	FORCEINLINE float GetTimeInMove() const { return TimeInCurrentMove; }
 
@@ -31,8 +31,10 @@ protected:
 	void LeftButtonReleased();
 	void TopButtonPressed();
 	void TopButtonReleased();
+	
 	void ReadXAxis(float Value);
 	void ReadYAxis(float Value);
+	
 	void UseGameCamera();
 
 	UFUNCTION(BlueprintImplementableEvent)
@@ -42,9 +44,9 @@ public:
 	// Input atoms are removed when they pass this age threshold. All moves must be executed in under this time.
 	// This needs to be tweaked for your game's feel, but it works.
 	UPROPERTY(EditAnywhere, meta=(ClampMin=0.f, ClampMax=10.f))
-	float InputExpirationTime = 0.75f; // 2.f;
+	float InputExpirationTime = 0.75f; // 1.f;
 	
-	UPROPERTY(EditAnywhere, meta=(DisplayName="[Analog] Direction Threshold", ClampMin=0.f, ClampMax=10.f, Category="Tick"))
+	UPROPERTY(EditAnywhere, meta=(DisplayName="Directional Threshold", ClampMin=0.f, ClampMax=10.f, Category="Tick"))
 	float DirectionThreshold = 0.5f;
 
 protected:
@@ -53,7 +55,7 @@ protected:
 	float TimeInCurrentMove = 0.f;
 
 	UPROPERTY(EditAnywhere, Category="Move")
-	UFGMove* CurrentMove;
+	UFGMove* CurrentMove = nullptr;
 
 	UPROPERTY(EditAnywhere, Category="Directional Input Atoms")
 	UFGDirectionalInputAtom* DirectionDownBackAtom;

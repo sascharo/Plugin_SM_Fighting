@@ -1,7 +1,7 @@
 #include "FGMoveLink.h"
 
-FStateMachineResult UFGMoveLink::TryLink(const AFGDefaultPawn* RefObject,
-											const TArray<USM_InputAtom*>& DataSource,
+FStateMachineResult UFGMoveLink::TryLink(const AFGDefaultPawn* DefaultPawn,
+											const TArray<USM_InputAtom*>& InputAtoms,
 											int32 DataIndex/*=0*/,
 											int32 RemainingSteps/*=-1*/)
 {
@@ -11,7 +11,7 @@ FStateMachineResult UFGMoveLink::TryLink(const AFGDefaultPawn* RefObject,
 		
 		for (const FVector2D& CancelWindow : CancelWindows)
 		{
-			if (RefObject->GetTimeInMove() == FMath::Clamp(RefObject->GetTimeInMove(), CancelWindow.X, CancelWindow.Y))
+			if (DefaultPawn->GetTimeInMove() == FMath::Clamp(DefaultPawn->GetTimeInMove(), CancelWindow.X, CancelWindow.Y))
 			{
 				bCanCancel = true;
 				
@@ -22,7 +22,7 @@ FStateMachineResult UFGMoveLink::TryLink(const AFGDefaultPawn* RefObject,
 		// If no cancel windows are provided, assume the move is always available.
 		if (bCanCancel || !CancelWindows.Num())
 		{
-			return InputStateMachine->RunState(RefObject, DataSource, DataIndex, RemainingSteps);
+			return InputStateMachine->RunState(DefaultPawn, InputAtoms, DataIndex, RemainingSteps);
 		}
 	}
 	

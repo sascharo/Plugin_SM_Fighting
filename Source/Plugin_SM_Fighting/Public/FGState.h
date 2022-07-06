@@ -16,6 +16,6 @@ public:
 	virtual FStateMachineResult LoopState(const UObject* RefObject,
 										  const TArray<USM_InputAtom*>& DataSource,
 										  int32 DataIndex,
-										  int32 RemainingSteps) override;
+										  int32 RemainingSteps);
 	
 };

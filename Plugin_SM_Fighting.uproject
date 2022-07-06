@@ -19,5 +19,11 @@
 			"Name": "BasicStateMachine",
 			"Enabled": true
 		}
+	],
+	"TargetPlatforms": [
+		"LinuxNoEditor",
+		"LinuxAArch64NoEditor",
+		"WindowsNoEditor",
+		"AllDesktop"
 	]
 }
