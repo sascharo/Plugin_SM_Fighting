@@ -8,7 +8,7 @@
  * 
  */
 UCLASS(Category="Fighting Game")
-class PLUGIN_SM_FIGHTING_API UFGState : public USM_State
+class UFGState : public USM_State
 {
 	GENERATED_BODY()
 

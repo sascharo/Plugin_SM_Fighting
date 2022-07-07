@@ -173,6 +173,7 @@ void AFGDefaultPawn::Tick(float DeltaSeconds)
 	
 	if (MoveLinkToFollow.SMResult.CompletionType == EStateMachineCompletionType::Accepted)
 	{
+		UE_LOG(LogTemp, Error, TEXT("...........................................................................\n...........................................................................\n..........................................................................."));
 		UE_LOG(LogTemp, Warning, TEXT("Switching to state %s."), *MoveLinkToFollow.Link->Move->Name.ToString());
 		
 		if (MoveLinkToFollow.Link->bClearInput ||
