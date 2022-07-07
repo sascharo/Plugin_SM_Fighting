@@ -6,9 +6,9 @@ public class Plugin_SM_Fighting : ModuleRules
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "BasicStateMachine" });
+		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "BasicStateMachine", "FGStateMachine" });
 
-		PrivateDependencyModuleNames.AddRange(new string[] { "FGStateMachine" });
+		//PrivateDependencyModuleNames.AddRange(new string[] { "" });
 
 		// Uncomment if you are using Slate UI
 		// PrivateDependencyModuleNames.AddRange(new string[] { "Slate", "SlateCore" });

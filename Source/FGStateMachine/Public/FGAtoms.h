@@ -50,7 +50,7 @@ enum class EFGInputButtons : uint8
  * 
  */
 UCLASS()
-class UFGDirectionalInputAtom : public USM_InputAtom
+class FGSTATEMACHINE_API UFGDirectionalInputAtom : public USM_InputAtom
 {
 	GENERATED_BODY()
 	
@@ -65,7 +65,7 @@ public:
  * 
  */
 UCLASS()
-class UFGButtonInputAtom : public USM_InputAtom
+class FGSTATEMACHINE_API UFGButtonInputAtom : public USM_InputAtom
 {
 	GENERATED_BODY()
 	

@@ -12,6 +12,10 @@
 				"BasicStateMachine",
 				"Engine"
 			]
+		},
+		{
+			"Name": "FGStateMachine",
+			"Type": "Runtime"
 		}
 	],
 	"Plugins": [

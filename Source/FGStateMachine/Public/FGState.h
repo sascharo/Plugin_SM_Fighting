@@ -7,8 +7,8 @@
 /**
  * 
  */
-UCLASS(Category="Fighting Game")
-class UFGState : public USM_State
+UCLASS()
+class FGSTATEMACHINE_API UFGState : public USM_State
 {
 	GENERATED_BODY()
 
